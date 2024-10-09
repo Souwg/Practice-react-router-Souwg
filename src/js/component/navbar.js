@@ -1,17 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Starwars from "../../img/Starwars.jpg";
+import starwars from "../../img/starwars.jpg"
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-			</Link>
+	<div className="container-fluid bg-black">
+		<div className="container">
+		<nav className="navbar mb-3 py-0">
+			<Link to="/"><img src={ starwars } style={{ width: '14%' }} alt="Starwars"/></Link>
 			<div className="ml-auto">
 				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
+					<button className="btn btn-primary me-2">favorites</button>
 				</Link>
 			</div>
 		</nav>
+		</div>
+	</div>
 	);
 };

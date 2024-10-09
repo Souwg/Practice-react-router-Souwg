@@ -1,7 +1,9 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
+			apiUrl: 'https://swapi.dev/api/',
+			characters: [],
+			/*demo: [
 				{
 					title: "FIRST",
 					background: "white",
@@ -12,18 +14,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			]*/
+				
 		},
 		actions: {
+			getCharacter: async () =>{
+				const {apiUrl} = getStore()
+				const response = await fetch (`${apiUrl}/people`)
+				const data = await response.json()
+				console.log(data)
+				if(response.ok){
+					setStore({characters: data.results,})
+					console.log("API Data:", data.results);
+				}else{
+					setStore({characters: false,})
+				}
+
+			},
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
+			/*exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
-			},
+			/*},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
@@ -37,7 +53,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			}
+			}*/
 		}
 	};
 };
