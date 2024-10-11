@@ -1,76 +1,73 @@
-import React, { useState, useContext } from "react"
+import React, { useContext } from "react"
 import { Context } from "../store/appContext";
+import "../../styles/home.css";
+import { Link } from "react-router-dom";
 
-export const Prueba = () =>{
+export const Characters = () =>{
     
     const {store} = useContext(Context);
 
     return (
         <div className="container">
-            <div className="title text-danger mt-4 mb-4"><h3>Characters</h3></div>
+            <div className="title text-danger mt-4 mb-0"><h2>Characters</h2></div>
             <div className="row">
+            <div className="d-flex overflow-auto mt-2" style={{ gap: '2rem', padding: '1rem', whiteSpace: 'nowrap', borderRadius: '25px' }}>
                 {store.characters.map((character, index) => (
-                        <div key={index} className="col-md-4"> {/* Coloca las cartas en columnas */}
+                        <div key={index} className="col-md-4">
                             <div className="card">
-                        <img src="..." className="card-img-top" alt="..."/>
-                        <div className="card-body">
+                        <img src={character.imageUrl} className="card-img-top" alt="..." style={{ height: '350px', width: '366px', objectFit: 'cover', objectPosition: 'center top', }} />
+                        <div className="card-body pb-0">
                             <h5 className="card-title">{character.name}</h5>
                         </div>
-                        <ul className="list-group list-group-flush">
-                            <li className="list-group-item">Gender: {character.gender}</li>
-                            <li className="list-group-item">A second item</li>
-                            <li className="list-group-item">A third item</li>
+                        <ul className="list-group list-group-flush border-0 ">
+                            <li className="list-group-item border-0 pb-0">Gender: {character.gender}</li>
+                            <li className="list-group-item border-0 pb-0">Hair Color: {character.hair_color}</li>
+                            <li className="list-group-item border-0 pb-0 mb-4">Eye-Color: {character.eye_color}</li>
                         </ul>
-                        <div className="card-body">
-                            <a href="#" className="card-link">Card link</a>
-                            <a href="#" className="card-link">Another link</a>
+                        <div className="card-body d-flex justify-content-between" style={{ }}>
+                        <Link to="/detailsCharacters">
+                            <div className="btn text-primary" style={{ border: '2px solid #0d6efd' }}>Learn more!</div>
+                        </Link>
+                        <div className="btn text-primary" style={{ border: '2px solid FDF44D'}}><i className="fa-solid fa-heart"></i></div>
                          </div>
                     </div>
                         </div>
-                    ))};
+                    ))}
+                </div>
             </div>
         </div>
     );
-};       ;
+};
 
+export const Planets = () =>{
 
-export const Card = () =>{
-    const [card, setCard] = useState([
-        { id: 1, nombre: 'Sousan', edad: 29 },
-        { id: 2, nombre: 'Alberto', edad: 31 },
-        { id: 3, nombre: 'Matias', edad: 7 },
-        { id: 4, nombre: 'Soupita', edad: 120 },
-        { id: 5, nombre: 'pingu', edad: 120 },
-    ])
+    const {store} = useContext(Context);
 
-    return(
-        <>
+    return (
         <div className="container">
-            <div className= "title text-danger mt-4 mb-5"><h3>Planets</h3></div>
+            <div className="title text-danger mt-4 mb-0"><h2>Planets</h2></div>
             <div className="row">
-                {card.map(cartas =>(
-                <div className="col" key={cartas.id}>
-                        <div className="card">
-                        <img src="..." className="card-img-top" alt="..."/>
-                        <div className="card-body">
-                            <h5 className="card-title"></h5>
-                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div className="d-flex overflow-auto mt-2" style={{ gap: '2rem', padding: '1rem', whiteSpace: 'nowrap' }}>
+                {store.planets.map((planet, index) => (
+                        <div key={index} className="col-md-4">
+                            <div className="card">
+                        <img src={planet.planetUrl} className="card-img-top" alt="..."/>
+                        <div className="card-body pb-0">
+                            <h5 className="card-title">{planet.name}</h5>
                         </div>
-                        <ul className="list-group list-group-flush">
-                            <li className="list-group-item">An item</li>
-                            <li className="list-group-item">A second item</li>
-                            <li className="list-group-item">A third item</li>
+                        <ul className="list-group list-group-flush border-0 ">
+                            <li className="list-group-item border-0 pb-0">Population: {planet.population}</li>
+                            <li className="list-group-item border-0 pb-0">Terrain: {planet.terrain}</li>
                         </ul>
-                        <div className="card-body">
-                            <a href="#" className="card-link">Card link</a>
-                            <a href="#" className="card-link">Another link</a>
+                        <div className="card-body d-flex justify-content-between" style={{ }}>
+                            <div className="btn text-primary" style={{ border: '2px solid #0d6efd' }}>Learn more!</div>
+                            <div className="btn text-primary" style={{ border: '2px solid FDF44D'}}><i className="fa-solid fa-heart"></i></div>
                          </div>
                     </div>
+                        </div>
+                    ))}
                 </div>
-                ))}
-            </div>    
+            </div>
         </div>
-        </>
     )
-
 }
