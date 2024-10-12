@@ -19,8 +19,8 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Routes>
-						<Route path="/detailscharacters" element={<Details />} />
-						<Route path="/single/:theid" element={<Single />} />
+						<Route path="/detailscharacters/:id" element={<Details />} />
+						<Route path="/single" element={<Single />} />
 						<Route path="/" element={ 
 							<div>
 							<Characters />

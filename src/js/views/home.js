@@ -1,11 +1,13 @@
 import React, { useContext } from "react"
 import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 import "../../styles/home.css";
 import { Link } from "react-router-dom";
 
 export const Characters = () =>{
     
     const {store} = useContext(Context);
+    const Navigate = useNavigate();
 
     return (
         <div className="container">
@@ -26,7 +28,7 @@ export const Characters = () =>{
                         </ul>
                         <div className="card-body d-flex justify-content-between" style={{ }}>
                         <Link to="/detailsCharacters">
-                            <div className="btn text-primary" style={{ border: '2px solid #0d6efd' }}>Learn more!</div>
+                            <div className="btn text-primary" onClick={() =>{ Navigate(`/detailsCharacters/${index + 1}`)}}  style={{ border: '2px solid #0d6efd' }}>Learn more!</div>
                         </Link>
                         <div className="btn text-primary" style={{ border: '2px solid FDF44D'}}><i className="fa-solid fa-heart"></i></div>
                          </div>
