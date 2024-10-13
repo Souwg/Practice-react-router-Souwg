@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Details = () => {
-	const { store } = useContext(Context);
+	const { store, actions } = useContext(Context);
 	const { id } = useParams();
 	const navigate = useNavigate();
 

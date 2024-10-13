@@ -14,7 +14,7 @@ export const Characters = () =>{
     }, [actions]);
 
     const handleCardClick = (index) => {
-        Navigate(`/character/${index}`);
+        Navigate(`/planets/${index}`);
     };
 
     return (
@@ -34,7 +34,7 @@ export const Characters = () =>{
                             <li className="list-group-item border-0 pb-0">Hair Color: {character.hair_color}</li>
                             <li className="list-group-item border-0 pb-0 mb-4">Eye-Color: {character.eye_color}</li>
                         </ul>
-                        <div className="card-body d-flex justify-content-between" style={{ }}>                    
+                        <div className="card-body d-flex justify-content-between">                    
                         <div className="btn text-primary" onClick={() => handleCardClick(index)}  style={{ border: '2px solid #0d6efd' }}>Learn more!</div>                     
                         <div className="btn text-primary" style={{ border: '2px solid FDF44D'}}><i className="fa-solid fa-heart"></i></div>
                          </div>
@@ -50,8 +50,16 @@ export const Characters = () =>{
 export const Planets = () =>{
 
     const {store, actions} = useContext(Context);
-    actions.getPlanets()
+    const Navigate = useNavigate();
 
+    useEffect(()=>{
+        actions.getPlanets();
+    },[actions]);
+
+    const handlePlanetClick = (index) =>{
+        Navigate(`/planets/${index}`);
+    }
+    
     return (
         <div className="container">
             <div className="title text-danger mt-4 mb-0"><h2>Planets</h2></div>
@@ -69,9 +77,7 @@ export const Planets = () =>{
                             <li className="list-group-item border-0 pb-0 text-wrap">Terrain: {planet.terrain}</li>
                         </ul>
                         <div className="card-body d-flex justify-content-between" style={{ }}>
-                            <Link to="/planet/">
-                            <div className="btn text-primary" style={{ border: '2px solid #0d6efd' }}>Learn more!</div>
-                            </Link>
+                            <div className="btn text-primary" onClick={()=>handlePlanetClick(index)} style={{ border: '2px solid #0d6efd' }}>Learn more!</div>
                             <div className="btn text-primary" style={{ border: '2px solid FDF44D'}}><i className="fa-solid fa-heart"></i></div>
                          </div>
                     </div>
