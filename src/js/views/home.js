@@ -14,7 +14,7 @@ export const Characters = () =>{
     }, [actions]);
 
     const handleCardClick = (index) => {
-        Navigate(`/planets/${index}`);
+        Navigate(`/character/${index}`);
     };
 
     return (
@@ -77,7 +77,7 @@ export const Planets = () =>{
                             <li className="list-group-item border-0 pb-0 text-wrap">Terrain: {planet.terrain}</li>
                         </ul>
                         <div className="card-body d-flex justify-content-between" style={{ }}>
-                            <div className="btn text-primary" onClick={()=>handlePlanetClick(index)} style={{ border: '2px solid #0d6efd' }}>Learn more!</div>
+                            <div className="btn text-primary" onClick={()=>handlePlanetClick(index)} style={{ border: '2px solid #0d6efd', height: '50px', width: '140px' }}>Learn more!</div>
                             <div className="btn text-primary" style={{ border: '2px solid FDF44D'}}><i className="fa-solid fa-heart"></i></div>
                          </div>
                     </div>
