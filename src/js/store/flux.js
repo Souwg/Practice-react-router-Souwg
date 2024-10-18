@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			apiUrl: 'https://swapi.dev/api/',
 			characters: [],
 			planets: [],
+			likesCounter: 0,
 			/*demo: [
 				{
 					title: "FIRST",
@@ -33,6 +34,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({characters: false,})
 				}
 
+			},
+
+			handleLike: (character) => {
+				const store = getStore();
+				const alreadyLiked = store.likedCharacters.find(c => c.name === character.name);
+				if (!alreadyLiked) {
+					setStore({
+						...store,
+						likedCharacters: [...store.likedCharacters, character],
+						likesCounter: store.likesCounter + 1
+					});
+				}
 			},
 
 			addCharacterImages: async () => {

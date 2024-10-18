@@ -1,17 +1,17 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import "../../styles/home.css";
 import { Link } from "react-router-dom";
+import Navbar from "../component/navbar"
+
 
 export const Characters = () =>{
     
     const {store, actions} = useContext(Context);
     const Navigate = useNavigate();
 
-    useEffect(() => {
-        actions.getCharacter();
-    }, [actions]);
+    
 
     const handleCardClick = (index) => {
         Navigate(`/character/${index}`);
@@ -36,7 +36,7 @@ export const Characters = () =>{
                         </ul>
                         <div className="card-body d-flex justify-content-between">                    
                         <div className="btn text-primary" onClick={() => handleCardClick(index)}  style={{ border: '2px solid #0d6efd' }}>Learn more!</div>                     
-                        <div className="btn text-primary" style={{ border: '2px solid FDF44D'}}><i className="fa-solid fa-heart"></i></div>
+                        <div className="btn text-primary" onClick={()=> actions.handleLike(character)} style={{ border: '2px solid FDF44D'}}><i className="fa-solid fa-heart"></i><p>{character.likes}</p></div>
                          </div>
                     </div>
                         </div>
